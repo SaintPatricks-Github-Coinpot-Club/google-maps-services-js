@@ -72,10 +72,12 @@ test("details should return all fields", async () => {
   expect(r.data.result.photos[0].width).toBeDefined();
 
   expect(Object.keys(r.data.result).sort()).toMatchInlineSnapshot(`
-    Array [
+    [
       "address_components",
       "adr_address",
       "business_status",
+      "current_opening_hours",
+      "editorial_summary",
       "formatted_address",
       "formatted_phone_number",
       "geometry",
@@ -97,6 +99,7 @@ test("details should return all fields", async () => {
       "utc_offset",
       "vicinity",
       "website",
+      "wheelchair_accessible_entrance",
     ]
   `);
 });

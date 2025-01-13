@@ -2,7 +2,7 @@ Node.js Client for Google Maps Services
 =======================================
 
 [![npm](https://img.shields.io/npm/v/@googlemaps/google-maps-services-js.svg)](https://www.npmjs.com/package/@googlemaps/google-maps-services-js)
-![CI](https://github.com/googlemaps/google-maps-services-js/workflows/CI/badge.svg)
+![Test](https://github.com/googlemaps/google-maps-services-js/workflows/Test/badge.svg)
 ![Release](https://github.com/googlemaps/google-maps-services-js/workflows/Release/badge.svg)
 [![codecov](https://codecov.io/gh/googlemaps/google-maps-services-js/branch/master/graph/badge.svg)](https://codecov.io/gh/googlemaps/google-maps-services-js)
 ![GitHub contributors](https://img.shields.io/github/contributors/googlemaps/google-maps-services-js?color=green)
@@ -10,7 +10,7 @@ Node.js Client for Google Maps Services
 [![Discord](https://img.shields.io/discord/676948200904589322)](https://discord.gg/jRteCzP)
 
 
-> This library is a refactor of a previous version published to [@google/maps](https://www.npmjs.com/package/@google/maps). It is now being published to [@googlemaps/google-maps-services-js](https://www.npmjs.com/package/@googlemaps/google-maps-services-js). Source for the old version is at the [@google/maps branch](https://github.com/googlemaps/google-maps-services-js/tree/%40google/maps).
+> This library is a refactor of a previous version published to [@google/maps](https://www.npmjs.com/package/@google/maps). It is now being published to [@googlemaps/google-maps-services-js](https://www.npmjs.com/package/@googlemaps/google-maps-services-js).
 
 Use Node.js? Want to [geocode][Geocoding API] something? Looking
 for [directions][Directions API]?
@@ -41,7 +41,7 @@ This library is designed for server-side Node.js applications. Attempting to use
 
 Below is a simple example calling the elevation method on the client class.
 
-Import the Google Maps Client using Typescript and ES6 module:
+Import the Google Maps Client using TypeScript and ES6 module:
 
 ```js
 import {Client} from "@googlemaps/google-maps-services-js";
@@ -61,7 +61,7 @@ client
   .elevation({
     params: {
       locations: [{ lat: 45, lng: -110 }],
-      key: "asdf",
+      key: process.env.GOOGLE_MAPS_API_KEY,
     },
     timeout: 1000, // milliseconds
   })

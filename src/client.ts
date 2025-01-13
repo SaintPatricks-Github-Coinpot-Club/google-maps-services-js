@@ -138,7 +138,7 @@ export interface ClientOptions {
  * ```
  */
 export class Client {
-  private axiosInstance: AxiosInstance;
+  private readonly axiosInstance: AxiosInstance;
   private experienceId: string[];
 
   constructor({ axiosInstance, config, experienceId }: ClientOptions = {}) {
@@ -168,17 +168,12 @@ export class Client {
 
   setExperienceId(...ids: string[]) {
     this.experienceId = ids;
-    this.axiosInstance.defaults.headers[X_GOOG_MAPS_EXPERIENCE_ID] = ids.join(
-      ","
-    );
+    this.axiosInstance.defaults.headers[X_GOOG_MAPS_EXPERIENCE_ID] =
+      ids.join(",");
   }
 
   clearExperienceId() {
     this.experienceId = null;
-    this.clearExperienceIdHeader();
-  }
-
-  private clearExperienceIdHeader() {
     delete this.axiosInstance.defaults.headers[X_GOOG_MAPS_EXPERIENCE_ID];
   }
 
@@ -206,6 +201,25 @@ export class Client {
   geolocate(request: GeolocateRequest): Promise<GeolocateResponse> {
     return geolocate(request, this.axiosInstance);
   }
+  /**
+   * An example use of this function.
+   *
+   * ```javascript
+   * import { Client } from '@googlemaps/google-maps-services-js';
+   *
+   * const args = {
+   *   params: {
+   *     key: '<your-api-key>',
+   *     address: 'Perth 4WD & Commercial Centre',
+   *   }
+   * };
+   * const client = new Client();
+   * client.geocode(args).then(gcResponse => {
+   *   const str = JSON.stringify(gcResponse.data.results[0]);
+   *   console.log(`First result is: ${str}`);
+   * });
+   * ```
+   */
   geocode(request: GeocodeRequest): Promise<GeocodeResponse> {
     return geocode(request, this.axiosInstance);
   }
